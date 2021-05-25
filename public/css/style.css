@@ -1,8 +1,59 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #F0F0F0 ;
 }
 
-a {
-  color: #00B7FF;
+.container{
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bgcolor-white{
+  background-color: white;
+}
+
+/* ####################### */
+/* カードの見た目 */
+/* ####################### */
+
+.flex{
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; /*影をつける*/
+  width: 100%;
+}
+
+#printNum{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(10px, 1fr));
+  gap: 1rem;
+}
+
+/* ####################### */
+/* カードの中身 */
+/* ####################### */
+.sectionTitleEn{
+  margin-left: 5%;
+  margin-bottom: 0%;
+}
+
+.sectionTitleJa{
+  margin-left: 5%;
+  margin-top: 0%;
+  color: #b5b5b5;
+}
+
+.countNum{
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.previousMonthOver{
+  color: #b5b5b5;
+  text-align: center;
+}
+
+.spanPercent{
+  color: #6e6e6e;
+  font-size: 1rem;
 }

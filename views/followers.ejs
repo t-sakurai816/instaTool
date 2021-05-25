@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= accountName %> フォロワー
+  </title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <section id="header" class="container">
+
+    <h1 class="bgcolor-white">
+      アカウント名:<%= accountName %>
+    </h1>
+
+  </section>
+
+  <section id="printNum" class="container">
+
+    <div id="totalFeedPost" class="flex">
+      <h3 class="sectionTitleEn">
+        Total Feed Post
+      </h3>
+      <p class="sectionTitleJa">投稿数</p>
+      <p class="countNum"><%=  post.nowNum%></p>
+      <p class="previousMonthOver">前月比 : <%=  post.previousMonthOverNum%></p>
+    </div>
+
+    <div class="flex">
+      <h3 class="sectionTitleEn">
+        Follower
+      </h3>
+      <p class="sectionTitleJa">現在のフォロワー数</p>
+      <p class="countNum"><%=  follower.nowNum%></p>
+      <p class="previousMonthOver">前月比 : <%=  follower.previousMonthOverNum%></p>
+    </div>
+
+    <div class="flex">
+      <h3 class="sectionTitleEn">
+        Likes
+      </h3>
+      <p class="sectionTitleJa">いいね数の平均</p>
+      <p class="countNum"><%=  likes.nowNum%></p>
+      <p class="previousMonthOver">前月比 : <%=  likes.previousMonthOverNum%></p>
+    </div>
+
+    <div class="flex">
+      <h3 class="sectionTitleEn">
+        Comment
+      </h3>
+      <p class="sectionTitleJa">コメント数の平均</p>
+      <p class="countNum"><%=  comment.nowNum%></p>
+      <p class="previousMonthOver">前月比 : <%=  comment.previousMonthOverNum%></p>
+    </div>
+
+    <div class="flex">
+      <h3 class="sectionTitleEn">
+        Engagement
+      </h3>
+      <p class="sectionTitleJa">エンゲージメント率</p>
+      <p class="countNum"><%=  engagement.nowNum%> <span class="spanPercent">%</span></p>
+      <p class="previousMonthOver">前月比 : <%=  engagement.previousMonthOverNum%></p>
+    </div>
+
+  </section>
+
+</body>
+
+</html>
