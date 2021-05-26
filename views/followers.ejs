@@ -6,8 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <%= accountName %> フォロワー
+    <%= accountName %> フォロワー | Analytics
   </title>
+  <!-- Date Range Picker -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -17,20 +22,23 @@
   <section id="header" class="container">
 
     <h1 class="bgcolor-white">
-      アカウント名:<%= accountName %>
+      アカウント名：<%= accountName %>
     </h1>
 
   </section>
 
   <section id="printNum" class="container">
 
-    <div id="totalFeedPost" class="flex">
+    <div class="flex">
       <h3 class="sectionTitleEn">
         Total Feed Post
       </h3>
       <p class="sectionTitleJa">投稿数</p>
-      <p class="countNum"><%=  post.nowNum%></p>
-      <p class="previousMonthOver">前月比 : <%=  post.previousMonthOverNum%></p>
+      <p class="countNum">
+        <%= post.nowNum%>
+      </p>
+      <p class="previousMonthOver">前月比 : <%= post.previousMonthOverNum%>
+      </p>
     </div>
 
     <div class="flex">
@@ -38,8 +46,11 @@
         Follower
       </h3>
       <p class="sectionTitleJa">現在のフォロワー数</p>
-      <p class="countNum"><%=  follower.nowNum%></p>
-      <p class="previousMonthOver">前月比 : <%=  follower.previousMonthOverNum%></p>
+      <p class="countNum">
+        <%= follower.nowNum%>
+      </p>
+      <p class="previousMonthOver">前月比 : <%= follower.previousMonthOverNum%>
+      </p>
     </div>
 
     <div class="flex">
@@ -47,8 +58,11 @@
         Likes
       </h3>
       <p class="sectionTitleJa">いいね数の平均</p>
-      <p class="countNum"><%=  likes.nowNum%></p>
-      <p class="previousMonthOver">前月比 : <%=  likes.previousMonthOverNum%></p>
+      <p class="countNum">
+        <%= likes.nowNum%>
+      </p>
+      <p class="previousMonthOver">前月比 : <%= likes.previousMonthOverNum%>
+      </p>
     </div>
 
     <div class="flex">
@@ -56,8 +70,11 @@
         Comment
       </h3>
       <p class="sectionTitleJa">コメント数の平均</p>
-      <p class="countNum"><%=  comment.nowNum%></p>
-      <p class="previousMonthOver">前月比 : <%=  comment.previousMonthOverNum%></p>
+      <p class="countNum">
+        <%= comment.nowNum%>
+      </p>
+      <p class="previousMonthOver">前月比 : <%= comment.previousMonthOverNum%>
+      </p>
     </div>
 
     <div class="flex">
@@ -65,10 +82,41 @@
         Engagement
       </h3>
       <p class="sectionTitleJa">エンゲージメント率</p>
-      <p class="countNum"><%=  engagement.nowNum%> <span class="spanPercent">%</span></p>
-      <p class="previousMonthOver">前月比 : <%=  engagement.previousMonthOverNum%></p>
+      <p class="countNum">
+        <%= engagement.nowNum%> <span class="spanPercent">%</span>
+      </p>
+      <p class="previousMonthOver">前月比 : <%= engagement.previousMonthOverNum%>
+      </p>
     </div>
 
+  </section>
+
+  <section id="chart" class="container">
+    <!-- 日付け選択 -->
+    <div class="inputDate">
+      <input type="text" id="daterange" name="daterange" />
+    </div>
+    <script>
+      $(function () {
+        $('input[name="daterange"]').daterangepicker({
+          opens: 'right',
+          format: "YYYY-MM-DD",
+          showWeekNumbers: true
+        }, function (start, end, label) {
+          console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+      });
+    </script>
+    <!-- グラフ -->
+    <h3 class="sectionTitleEn">Followers Activity</h3>
+    <p class="sectionTitleJa">フォロワーの推移</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.js"
+      integrity="sha512-jRQOiy89ZX0kVR/VpJd8PP4hPofcuYlfPU9MhPzHFIB19QAzCO7myRcO0Dgycu4iANZdnmXZ5sa/dL60y7BZgw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <canvas id="myChart">
+      <script src="/js/line-chart.js"></script>
+
+    </canvas>
   </section>
 
 </body>

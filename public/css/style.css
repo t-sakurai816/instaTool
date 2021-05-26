@@ -9,8 +9,9 @@ body {
   margin-left: auto;
 }
 
-.bgcolor-white{
+#header{
   background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; /*影をつける*/
 }
 
 /* ####################### */
@@ -57,3 +58,33 @@ body {
   color: #6e6e6e;
   font-size: 1rem;
 }
+
+/* ####################### */
+/* 日付け */
+/* ####################### */
+
+.inputDate{
+  text-align: right;
+  margin-right: 3rem;
+}
+
+#daterange{
+  padding: 10px 15px; /*ボックスを大きくする*/
+  font-size: 16px;
+  border-radius: 3px; /*ボックス角の丸み*/
+  border: 2px solid #ddd; /*枠線*/
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+
+/* ####################### */
+/* グラフ */
+/* ####################### */
+
+#chart{
+  background-color: white;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; /*影をつける*/
+}
+
