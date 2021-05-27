@@ -14,6 +14,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   // 送られてきたdata(=req.body)を代入する
+  // 日付けの計算
   const startDate = dayjs(req.body.startDate);
   const endDate = dayjs(req.body.endDate);
   let labelsDateArray = [];
@@ -21,9 +22,9 @@ router.post('/', function (req, res, next) {
     labelsDateArray.push(date.format('YYYY-MM-DD'))
   }
 
-  const labelsDateJson = { "labelsDateArray": labelsDateArray };
+  const responseDataJson = { "labelsDateArray": labelsDateArray };
   res.header('Content-Type', 'application/json; charset=utf-8')
-  res.send(labelsDateJson);
+  res.send(responseDataJson);
 });
 
 
