@@ -26,10 +26,6 @@ router.post('/', function (req, res, next) {
   res.send(labelsDateJson);
 });
 
-/* GET home page. */
-router.get('/test2', function (req, res, next) {
-  res.render('test2');
-});
 
 
 module.exports = router;
