@@ -13,6 +13,8 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -103,7 +105,31 @@
           format: "YYYY-MM-DD",
           showWeekNumbers: true
         }, function (start, end, label) {
-          console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+          const startDate = start.format('YYYY-MM-DD');
+          const endDate = end.format('YYYY-MM-DD');
+
+          // 開始日と終了日をfetch.postする
+          const postData = { "startDate": startDate, "endDate": endDate };
+          const URL = "http://localhost:3000/api/v1/activity";
+          fetch(URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+          })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data.labelsDateArray);
+              // すでにグラフがあったら消す
+              if (myChart) {
+                myChart.destroy();
+              }
+              lineChart(data.labelsDateArray);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
         });
       });
     </script>
@@ -115,7 +141,13 @@
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <canvas id="myChart">
       <script src="/js/line-chart.js"></script>
-
+      <script>
+        let oneWeek = []
+        for (let i = -7; i <= 0; i++) {
+          oneWeek.push(moment().add(i, 'days').format('YYYY-MM-DD'));
+        }
+        lineChart(oneWeek);
+      </script>
     </canvas>
   </section>
 

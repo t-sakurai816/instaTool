@@ -8,6 +8,12 @@ const indexRouter = require('./routes/index');
 const followersRouter = require('./routes/followers');
 const usersRouter = require('./routes/users');
 
+///////////////////////////////
+// API
+///////////////////////////////
+
+const apiActivityRouter = require('./routes/api/v1/activity');
+
 const app = express();
 
 // view engine setup
@@ -23,6 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/followers', followersRouter);
 app.use('/users', usersRouter);
+
+///////////////////////////////
+// API
+///////////////////////////////
+app.use('/api/v1/activity', apiActivityRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
