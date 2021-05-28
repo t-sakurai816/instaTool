@@ -36,8 +36,8 @@
         Total Feed Post
       </h3>
       <p class="sectionTitleJa">投稿数</p>
-      <p class="countNum">
-        <%= post.nowNum%>
+      <p class="countNum" id="postNowNum">
+        <!-- <%= post.nowNum%> -->
       </p>
       <p class="previousMonthOver">前月比 : <%= post.previousMonthOverNum%>
       </p>
@@ -48,12 +48,37 @@
         Follower
       </h3>
       <p class="sectionTitleJa">現在のフォロワー数</p>
-      <p class="countNum">
-        <%= follower.nowNum%>
+      <p class="countNum" id="followerNowNum">
+        <!-- <%= follower.nowNum%> -->
       </p>
       <p class="previousMonthOver">前月比 : <%= follower.previousMonthOverNum%>
       </p>
     </div>
+
+    <script>
+      const postNowNum = document.getElementById("postNowNum");
+      const followerNowNum = document.getElementById("followerNowNum");
+
+      const URL = "http://localhost:3000/api/v1/activity/get-num"
+      const postData = { "accountName": "test_t.saku" };
+      fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // 取得したデータをもとに書き換える
+          postNowNum.textContent = data.postNowNum;
+          followerNowNum.textContent = data.followerNowNum;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    </script>
 
     <div class="flex">
       <h3 class="sectionTitleEn">
