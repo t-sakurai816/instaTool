@@ -4,9 +4,6 @@ const router = express.Router();
 const env = require('./../env.json')[app.get('env')];
 const request = require('request');
 
-// TODO:どこかでaccountNameを取得する
-
-
 router.get('/', function (req, res, next) {
   // URLからaccoundNameを読み込む
   const accountName = req.query.accountName;
