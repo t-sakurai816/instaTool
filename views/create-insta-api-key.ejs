@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/create-insta-api-key.css">
+</head>
+
+<body>
+  <section id="header" class="container">
+
+    <h1 class="bgcolor-white">
+      インスタAPIキーの作成
+    </h1>
+
+  </section>
+
+  <section id="how-to" class="container" style="background-color: white;">
+
+    <h2>下のフォームに【アプリID】【app secret】【1次アクセストークン】を入力してね</h2>
+
+    <form action="/create-insta-api-key" method="post">
+      <div class="form">
+        <div class="form-Item">
+          <p class="form-Item-label">
+            <span class="form-Item-label-required">必須</span>インスタアカウント名
+          </p>
+          <input type="text" name="instaAccountName" class="form-Item-input" placeholder="">
+        </div>
+        <div class="form-Item">
+          <p class="form-Item-label">
+            <span class="form-Item-label-required">必須</span>Facebookページ名
+          </p>
+          <input type="text" name="appId" class="form-Item-input" placeholder="">
+        </div>
+        <div class="form-Item">
+          <p class="form-Item-label">
+            <span class="form-Item-label-required">必須</span>アプリID
+          </p>
+          <input type="text" name="appId" class="form-Item-input" placeholder="数字のみ">
+        </div>
+        <div class="form-Item">
+          <p class="form-Item-label"><span class="form-Item-label-required">必須</span>app secret</p>
+          <input type="text" name="appSecret" class="form-Item-input" placeholder="英数字混合（そこそこ長い）">
+        </div>
+        <div class="form-Item">
+          <p class="form-Item-label"><span class="form-Item-label-required">必須</span>1次アクセストークン</p>
+          <input type="text" name="firstAccsessToken" class="form-Item-input" placeholder="英数字混合（すごく長い）">
+        </div>
+        <input type="submit" class="form-Btn" value="発行">
+      </div>
+    </form>
+  </section>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const followersRouter = require('./routes/followers');
+const createInstaApiKeyRouter = require('./routes/create-insta-api-key');
 const usersRouter = require('./routes/users');
 
 ///////////////////////////////
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/followers', followersRouter);
+app.use('/create-insta-api-key', createInstaApiKeyRouter);
 app.use('/users', usersRouter);
 
 ///////////////////////////////
